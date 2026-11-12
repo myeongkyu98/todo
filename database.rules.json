@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "todos": {
+      ".read": true,
+      "$todoId": {
+        ".write": true,
+        ".validate": "newData.hasChildren(['text', 'done', 'createdAt'])",
+        "text": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200" },
+        "done": { ".validate": "newData.isBoolean()" },
+        "createdAt": { ".validate": "newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}

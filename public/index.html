@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>할일 목록</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header>
+      <h1>📝 할일 목록</h1>
+      <p class="summary" id="summary">불러오는 중…</p>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <input id="new-text" type="text" placeholder="할일을 입력하세요" maxlength="200" autocomplete="off" required />
+      <button type="submit">추가</button>
+    </form>
+
+    <div class="filters" role="tablist">
+      <button class="filter active" data-filter="all">전체</button>
+      <button class="filter" data-filter="todo">할일</button>
+      <button class="filter" data-filter="done">완료</button>
+    </div>
+
+    <p id="error" class="error" hidden></p>
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty" hidden>할일이 없어요. 위에서 추가해 보세요!</p>
+  </main>
+
+  <script src="firebase.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

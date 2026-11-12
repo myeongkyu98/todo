@@ -1,0 +1,103 @@
+:root {
+  --bg: #f4f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --danger: #dc2626;
+  --done: #9ca3af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", "Malgun Gothic", sans-serif;
+}
+
+.app {
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 24px;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+h1 { margin: 0 0 4px; font-size: 1.6rem; }
+.summary { margin: 0 0 20px; color: var(--muted); }
+
+/* 입력 */
+.add-form { display: flex; gap: 8px; }
+.add-form input,
+.edit-input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.add-form input:focus,
+.edit-input:focus { outline: 2px solid var(--primary); border-color: transparent; }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+.add-form button { background: var(--primary); color: #fff; font-weight: 600; }
+.add-form button:hover { background: var(--primary-dark); }
+
+/* 필터 */
+.filters { display: flex; gap: 6px; margin: 16px 0 8px; }
+.filter { background: transparent; color: var(--muted); padding: 6px 12px; }
+.filter.active { background: #eef2ff; color: var(--primary); font-weight: 600; }
+
+/* 목록 */
+.list { list-style: none; margin: 0; padding: 0; }
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--line);
+}
+.item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--primary); flex-shrink: 0; cursor: pointer; }
+.item .text { flex: 1; word-break: break-word; }
+.item.done .text { text-decoration: line-through; color: var(--done); }
+
+.actions { display: flex; gap: 4px; flex-shrink: 0; }
+.actions button { padding: 6px 10px; background: #f3f4f6; color: var(--text); font-size: 0.9rem; }
+.actions button:hover { background: #e5e7eb; }
+.actions .delete { color: var(--danger); }
+.actions .save { background: var(--primary); color: #fff; }
+
+.empty { text-align: center; color: var(--muted); padding: 24px 0; }
+.error { color: var(--danger); margin: 8px 0; }
+
+/* 모바일: 화면 꽉 채우고, 버튼과 입력칸을 크게 */
+@media (max-width: 600px) {
+  .app {
+    margin: 0;
+    min-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 20px 16px;
+  }
+  .add-form input,
+  .edit-input { font-size: 16px; padding: 14px; min-height: 48px; } /* 16px 이상이면 아이폰에서 확대되지 않아요 */
+  .add-form button { min-height: 48px; padding: 0 20px; }
+  .filter { flex: 1; min-height: 44px; }
+  .item { flex-wrap: wrap; padding: 14px 4px; }
+  .item input[type="checkbox"] { width: 26px; height: 26px; }
+  .item .text { font-size: 1.05rem; }
+  .actions { width: 100%; justify-content: flex-end; gap: 8px; }
+  .actions button { min-height: 44px; min-width: 64px; font-size: 1rem; }
+}
